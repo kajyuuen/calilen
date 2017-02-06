@@ -8,7 +8,6 @@ RSpec.describe Calil::API do
   end
 
   it "return url if client important_query are present" do
-    expect(client.library({ pref:'青森県' })).to eq('http://api.calil.jp/library?app_key=AK&pref=青森県')
+    expect(client.library_search({ pref:'青森県' })).to eq('http://api.calil.jp/library?app_key=AK&pref=青森県')
   end
-
 end

@@ -1,6 +1,3 @@
-require 'calil/library'
-require 'faraday'
-
 module Calil
   class API
 
@@ -8,11 +5,13 @@ module Calil
 
     API_URL = 'http://api.calil.jp/library'
 
+    # API.new(app_key: 'Your app_key')
     def initialize(app_key:)
       @app_key = app_key
     end
 
-    def library(options={})
+    # Use library database
+    def library_search(options={})
       # TODO: @app_keyが無いときのエラーハンドリング
       if options[:pref] || options[:systemid] || options[:geocode]
         query = ''
