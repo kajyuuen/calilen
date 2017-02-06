@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'json'
+
 module Calil
   class API
 
@@ -12,16 +15,17 @@ module Calil
 
     # Use library database
     def library_search(options={})
-      # TODO: @app_keyが無いときのエラーハンドリング
-      if options[:pref] || options[:systemid] || options[:geocode]
-        query = ''
-        options.each do |key, value|
-          query += "&#{key}=#{value}"
-        end
-        url = "#{API_URL}?app_key=#{@app_key+query}"
-      else
-        # TODO: 必須項目が無いときのエラーハンドリング
+      query = ''
+      options.each do |key, value|
+        query += "&#{key}=#{value}"
       end
+      url = "#{API_URL}?app_key=#{@app_key+query}&format=json&callback="
+      post_url(url)
+    end
+
+    # Post url
+    def post_url(url)
+      open(url) {|f| JSON.load(f)}
     end
   end
 end
