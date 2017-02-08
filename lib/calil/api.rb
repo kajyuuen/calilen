@@ -1,3 +1,4 @@
+require 'calil/library'
 require 'open-uri'
 require 'json'
 
@@ -25,7 +26,11 @@ module Calil
 
     # Post url
     def post_url(url)
-      open(url) {|f| JSON.load(f)}
+      json = open(url) {|f| JSON.load(f)}
+      json.each do |value|
+        return Library.new( value.map{|k,v| [k.to_sym, v] }.to_h )
+      end
+      #json#.to_h.map{|k,v| [k.to_sym, v] }.to_h
     end
   end
 end
