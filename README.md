@@ -41,6 +41,8 @@ end
 Library search
 
 ```ruby
+require 'calil'
+
 client= Calil.new(app_key: 'Your app_key')
 
 # http://api.calil.jp/check?appkey={Your app_key}&isbn=4834000826&systemid=Aomori_Pref&format=json
@@ -57,7 +59,7 @@ book.polling
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/calil. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kajyuuen/calilen. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
