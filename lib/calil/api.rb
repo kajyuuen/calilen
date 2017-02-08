@@ -1,3 +1,7 @@
+require 'calil/library'
+require 'open-uri'
+require 'json'
+
 module Calil
   class API
 
@@ -5,8 +9,25 @@ module Calil
 
     API_URL = 'http://api.calil.jp/library'
 
+    # API.new(app_key: 'Your app_key')
     def initialize(app_key:)
       @app_key = app_key
+    end
+
+    # Use library database
+    def library_search(options={})
+      query = ''
+      options.each do |key, value|
+        query += "&#{key}=#{value}"
+      end
+      url = "#{API_URL}?app_key=#{@app_key+query}&format=json&callback="
+      post_url(url)
+    end
+
+    # Post url
+    def post_url(url)
+      json = open(url) {|f| JSON.load(f)}
+      json.map {|hash| Library.new( hash ) }
     end
   end
 end
