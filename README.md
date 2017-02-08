@@ -1,4 +1,4 @@
-# Calil
+# Calilen
 
 [カーリル](https://calil.jp/)のAPIマッパー
 ## Installation
@@ -6,7 +6,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'calil'
+gem 'calilen'
 ```
 
 And then execute:
@@ -15,7 +15,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install calil
+    $ gem install calilen
 
 ## Usage
 
