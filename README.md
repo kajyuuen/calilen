@@ -1,4 +1,5 @@
-https://circleci.com/gh/kajyuuen/calilen.png?circle-token=fbbb247dac38d8fc5133cd4406a2f40a53c0f374
+[![CircleCI](https://circleci.com/gh/kajyuuen/calilen/tree/master.svg?style=svg)](https://circleci.com/gh/kajyuuen/calilen/tree/master)
+
 # Calilen
 
 [カーリル](https://calil.jp/)のAPIマッパー
