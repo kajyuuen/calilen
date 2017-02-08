@@ -25,24 +25,18 @@ module Calil
       post_library_url(url)
     end
 
-    # Use library database
     def check_search(options={})
       query = ''
       options.each do |key, value|
         query += "&#{key}=#{value}"
       end
       url = "#{ROOT_URL}check?app_key=#{@app_key+query}&format=json&callback=no"
-      post_check_url(url)
+      Check.new(open(url) {|f| JSON.load(f)})
     end
 
     def post_library_url(url)
       json = open(url) {|f| JSON.load(f)}
       json.map {|hash| Library.new( hash ) }
-    end
-
-    def post_check_url(url)
-      json = open(url) {|f| JSON.load(f)}
-      Check.new(json)
     end
   end
 end

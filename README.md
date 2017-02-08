@@ -22,7 +22,40 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use library database
+
+```ruby
+client= Calil.new(app_key: 'Your app_key')
+
+# http://api.calil.jp/library?appkey={Your app_key}&pref=埼玉県
+libraries = client.library_search(pref: '埼玉県')
+
+# http://api.calil.jp/library?appkey={Your app_key}&geocode=136.7163027,35.390516&limit=10
+libraries = client.library_search(geocode: '7163027,35.390516', limit: 10)
+
+libraries.each |s|
+  p s.systemid #=>Tokyo_NDL
+  p s.libkey #=>東京本館
+end
+```
+
+Library search
+
+```ruby
+client= Calil.new(app_key: 'Your app_key')
+
+# http://api.calil.jp/check?appkey={Your app_key}&isbn=4834000826&systemid=Aomori_Pref&format=json
+book = client.library_search(isbn: 4834000826, systemid: 'Aomori_Pref')
+
+libraries.each |s|
+  p s.session #=>11a285036112525afe32b1a3d4c36245
+  p s.books
+end
+
+# http://api.calil.jp/check?session=11a285036112525afe32b1a3d4c36245&format=json
+book.polling
+```
+
 
 ## Development
 
@@ -38,4 +71,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

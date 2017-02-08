@@ -16,7 +16,7 @@ module Calil
     def polling
       if @continue == 1
         url = "#{POLLING_URL}?session=#{@session}&format=jsonjson&callback=no"
-        post_check_url(url)
+        Check.new(open(url) {|f| JSON.load(f)})
       else
         nil
       end
@@ -28,11 +28,6 @@ module Calil
 
     def to_a
       to_h.to_a
-    end
-
-    def post_check_url(url)
-      json = open(url) {|f| JSON.load(f)}
-      Check.new(json)
     end
   end
 end
