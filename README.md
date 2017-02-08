@@ -22,6 +22,8 @@ Or install it yourself as:
 Use library database
 
 ```ruby
+require 'calil'
+
 client= Calil.new(app_key: 'Your app_key')
 
 # http://api.calil.jp/library?appkey={Your app_key}&pref=埼玉県
