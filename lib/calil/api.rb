@@ -1,4 +1,5 @@
 require 'calil/library'
+require 'calil/check'
 require 'open-uri'
 require 'json'
 
@@ -30,8 +31,8 @@ module Calil
       options.each do |key, value|
         query += "&#{key}=#{value}"
       end
-      url = "#{ROOT_URL}check?app_key=#{@app_key+query}&format=json&callback="
-      post_url(url)
+      url = "#{ROOT_URL}check?app_key=#{@app_key+query}&format=json&callback=no"
+      post_check_url(url)
     end
 
     def post_library_url(url)
@@ -41,7 +42,7 @@ module Calil
 
     def post_check_url(url)
       json = open(url) {|f| JSON.load(f)}
-      json.map {|hash| Check.new( hash ) }
+      Check.new(json)
     end
   end
 end
