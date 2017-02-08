@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'calil/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "calil"
+  spec.name          = "calilen"
   spec.version       = Calil::VERSION
   spec.authors       = ["kajyuuen"]
   spec.email         = ["kajyuuen@gmail.com"]
